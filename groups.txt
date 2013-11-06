@@ -1,0 +1,8 @@
+# $Id: groups.txt 53544 2009-03-09 16:28:58Z tlazar $
+#
+
+# The Zope admin group
+AdminZope:admin
+
+# CPS Test groups
+FL_Member:echotester1,echotester2,echotester3,echotester4,echotester5

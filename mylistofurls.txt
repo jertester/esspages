@@ -1,0 +1,33 @@
+/ess/schedule/ListScheduleRules.html,Presenter
+/ess/adhoc/ListAdHocs.html,Ad Hoc Captures
+/ess/download/ListDownloads.html,Software Installer Downloads
+/ess/schedule/ListScheduleRules.html,Schedules
+/ess/course/ListCourses.html,Courses
+/ess/term/ListTerms.html,Terms
+/ess/library/ListAssets.html,Branding Files
+/ess/capture/ListCaptures.html,Captures
+/ess/task/ListProcessingTasks.html,Processing Tasks
+/ess/device/ListUnmanagedDevices.html,Personal Capture Devices
+/ess/alert/ListAlerts.html,Alerts
+/ess/notifier/ListNotifiers.html,Notifiers
+/ess/alert/AlertRoleAssignments.html, Alert Settings
+/ess/monitor/UploadToSupport.html,Support
+/ess/report/DetailedReports.html,Detailed Reports
+/ess/audit/ShowAuditReport.html,Audit Report
+/ess/report/Summary.html,Summary
+/ess/device/ListDevices.html,Devices
+/ess/device/ListDeviceProfiles.html,Device Configurations
+/ess/room/ListRooms.html,Rooms
+/ess/person/ListPersons.html,Users
+/ess/product/ListProductGroups.html,Product Groups
+/ess/publisher/ListPublishers.html,Publishers
+/ess/publisher/ListLTIProfiles.html,LTI
+/ess/organization/ListOrganizations.html,Organizations
+/ess/config/ShowConfiguration.html,System Settings
+/ess/security/ListSecurityModules.html,Security Modules
+/ess/config/ShowGlobalDefaults.html,Device Defaults
+/ess/certificates/ShowCertificates.html,Show Certificates
+/ess/security/ListTrustedSystems.html,Trusted Systems
+/ess/security/ListHostedServiceProviders.html,Hosted Services - EchoSystem Server
+/ess/system/ManageSystemIndexes.html,System Indexes
+/ess/license/ListLicenses.html,Licenses

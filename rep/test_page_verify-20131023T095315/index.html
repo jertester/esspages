@@ -1,0 +1,7126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.10: http://docutils.sourceforge.net/" />
+<title>FunkLoad bench report</title>
+<meta name="date" content="2013-10-23 09:53:15" />
+<style type="text/css">
+
+/* funkload doc css */
+/* $Id: nuxeo_doc.css 21596 2005-02-15 10:01:33Z bdelbosc $ */
+
+body {
+  font: 90% 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: black;
+  margin: 2em;
+  padding: 2em;
+}
+
+a[href] {
+  color: #436976;
+  background-color: transparent;
+}
+
+h1 a[href] {
+  text-decoration: none;
+  color: #fcb100;
+  background-color: transparent;
+}
+
+a.strong {
+  font-weight: bold;
+}
+
+img {
+  margin: 0;
+  border: 0;
+}
+
+p {
+  margin: 0.5em 0 1em 0;
+  line-height: 1.5em;
+}
+p a {
+  text-decoration: underline;
+}
+p a:visited {
+  color: purple;
+  background-color: transparent;
+}
+p a:active {
+  color: red;
+  background-color: transparent;
+}
+a:hover {
+  text-decoration: none;
+}
+p img {
+  border: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #003a6b;
+  background-color: transparent;
+  font: 100% 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding-top: 0.5em;
+}
+
+h1 {
+  font-size: 160%;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid #888;
+  margin-top: 1em;
+}
+
+h1.title {
+  font-size: 200%;
+}
+
+h2 {
+  font-size: 140%;
+  margin-bottom: 0.5em;
+}
+h3 {
+  font-size: 120%;
+  margin-bottom: 0.5em;
+}
+h4 {
+  font-size: 110%;
+  font-weight: bold;
+}
+h5 {
+  font-size: 100%;
+  font-weight: bold;
+}
+h6 {
+  font-size: 80%;
+  font-weight: bold;
+}
+
+ul a, ol a {
+  text-decoration: underline;
+}
+
+dt {
+  font-weight: bold;
+}
+dt a {
+  text-decoration: none;
+}
+
+dd {
+  line-height: 1.5em;
+  margin-bottom: 1em;
+}
+
+legend {
+  background: #ffffff;
+  padding: 0.5em;
+}
+
+form {
+  margin: 0;
+}
+
+
+dl.form {
+  margin: 0;
+  padding: 1em;
+}
+
+dl.form dt {
+  width: 30%;
+  float: left;
+  margin: 0;
+  padding: 0 0.5em 0.5em 0;
+  text-align: right;
+}
+
+input {
+  font: 100% 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif;
+  color: black;
+  background-color: white;
+  vertical-align: middle;
+}
+
+abbr, acronym, .explain {
+  color: black;
+  background-color: transparent;
+}
+
+q, blockquote {
+}
+
+code, pre {
+  font-family: monospace;
+  font-size: 1.2em;
+  display: block;
+  padding: 10px;
+  border: 1px solid #838183;
+  background-color: #eee;
+  color: #000;
+  overflow: auto;
+  margin: 0.5em 1em;
+}
+
+table.docutils {
+  border: 1px solid black;
+  font-size: 0.6em;
+  border-spacing: 0;
+  padding: 0;
+  margin: 1em;
+}
+
+table.docutils td {
+  border: 1px solid #CCC;
+  text-align: right;
+  padding: 0 0.3em;
+  margin: 0;
+}
+
+table.docutils tr {
+ padding: 0;
+ margin: 0;
+}
+
+table.docutils th {
+  border: 1px solid #CCC;
+  border-bottom: 1px solid black;
+  padding: 0.3em;
+  font-weight: bold;
+  margin: 0;
+}
+
+table.docutils td p, table.docutils th p {
+  margin: 0;
+  padding: 0;
+}
+
+table.docutils th.field-name {
+  border: 1px solid #CCC;
+}
+
+div.abstract {
+  padding: 0.5em;
+  background-color: #eef;
+  border: 1px solid #838183;
+  margin: 0.5em 1em;
+}
+
+div.abstract {
+  padding: 0.5em;
+  background-color: #eef;
+  border: 1px solid #838183;
+  margin: 0.5em 1em;
+}
+
+div.warning, div.note {
+  padding: 0.5em;
+  background-color: #fee;
+  border: 1px solid #838183;
+  margin: 0.5em 1em;
+}
+
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+}
+
+div.abstract p.topic-title {
+  font-weight: bold
+}
+
+
+th.field-name {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+td.field-body {
+  font-size: 1.5em;
+}
+
+tr.field {
+  border: none;
+}
+
+
+div.contents p.first a {
+  font-size: 150%;
+  border-bottom: 1px solid #888;
+  color: #fcb100;
+}
+
+div.contents a  { text-decoration: none }
+
+pre.address {
+  display: inline;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+</style>
+</head>
+<body>
+<div class="document" id="funkload-bench-report">
+<h1 class="title"><a class="reference external" href="http://funkload.nuxeo.org/">FunkLoad</a> bench report</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Date:</th>
+<td>2013-10-23 09:53:15</td></tr>
+</tbody>
+</table>
+<div class="abstract topic">
+<p class="topic-title first">Abstract</p>
+<p>Simply testing a default apache 2 server
+Bench result of <tt class="docutils literal">Simple.test_page_verify</tt>:
+Access 1 times the following pages: List of Presentations from File mylistofurls.txt.</p>
+</div>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of contents</p>
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#bench-configuration" id="id7">1&nbsp;&nbsp;&nbsp;Bench configuration</a></li>
+<li><a class="reference internal" href="#bench-content" id="id8">2&nbsp;&nbsp;&nbsp;Bench content</a></li>
+<li><a class="reference internal" href="#test-stats" id="id9">3&nbsp;&nbsp;&nbsp;Test stats</a></li>
+<li><a class="reference internal" href="#page-stats" id="id10">4&nbsp;&nbsp;&nbsp;Page stats</a></li>
+<li><a class="reference internal" href="#request-stats" id="id11">5&nbsp;&nbsp;&nbsp;Request stats</a></li>
+<li><a class="reference internal" href="#slowest-requests" id="id12">6&nbsp;&nbsp;&nbsp;Slowest requests</a></li>
+<li><a class="reference internal" href="#page-detail-stats" id="id13">7&nbsp;&nbsp;&nbsp;Page detail stats</a><ul class="auto-toc">
+<li><a class="reference internal" href="#page-001" id="id14">7.1&nbsp;&nbsp;&nbsp;PAGE 001:</a></li>
+<li><a class="reference internal" href="#page-002-get-ess-schedule-listschedulerules-html" id="id15">7.2&nbsp;&nbsp;&nbsp;PAGE 002: Get /ess/schedule/ListScheduleRules.html</a></li>
+<li><a class="reference internal" href="#page-003-post-for-login-against-ldap" id="id16">7.3&nbsp;&nbsp;&nbsp;PAGE 003: Post for login against LDAP</a></li>
+<li><a class="reference internal" href="#page-004-get-ess-adhoc-listadhocs-html" id="id17">7.4&nbsp;&nbsp;&nbsp;PAGE 004: Get /ess/adhoc/ListAdHocs.html</a></li>
+<li><a class="reference internal" href="#page-005-get-ess-download-listdownloads-html" id="id18">7.5&nbsp;&nbsp;&nbsp;PAGE 005: Get /ess/download/ListDownloads.html</a></li>
+<li><a class="reference internal" href="#page-006-get-ess-schedule-listschedulerules-html" id="id19">7.6&nbsp;&nbsp;&nbsp;PAGE 006: Get /ess/schedule/ListScheduleRules.html</a></li>
+<li><a class="reference internal" href="#page-007-get-ess-course-listcourses-html" id="id20">7.7&nbsp;&nbsp;&nbsp;PAGE 007: Get /ess/course/ListCourses.html</a></li>
+<li><a class="reference internal" href="#page-008-get-ess-term-listterms-html" id="id21">7.8&nbsp;&nbsp;&nbsp;PAGE 008: Get /ess/term/ListTerms.html</a></li>
+<li><a class="reference internal" href="#page-009-get-ess-library-listassets-html" id="id22">7.9&nbsp;&nbsp;&nbsp;PAGE 009: Get /ess/library/ListAssets.html</a></li>
+<li><a class="reference internal" href="#page-010-get-ess-capture-listcaptures-html" id="id23">7.10&nbsp;&nbsp;&nbsp;PAGE 010: Get /ess/capture/ListCaptures.html</a></li>
+<li><a class="reference internal" href="#page-011-get-ess-task-listprocessingtasks-html" id="id24">7.11&nbsp;&nbsp;&nbsp;PAGE 011: Get /ess/task/ListProcessingTasks.html</a></li>
+<li><a class="reference internal" href="#page-012-get-ess-device-listunmanageddevices-html" id="id25">7.12&nbsp;&nbsp;&nbsp;PAGE 012: Get /ess/device/ListUnmanagedDevices.html</a></li>
+<li><a class="reference internal" href="#page-013-get-ess-alert-listalerts-html" id="id26">7.13&nbsp;&nbsp;&nbsp;PAGE 013: Get /ess/alert/ListAlerts.html</a></li>
+<li><a class="reference internal" href="#page-014-get-ess-notifier-listnotifiers-html" id="id27">7.14&nbsp;&nbsp;&nbsp;PAGE 014: Get /ess/notifier/ListNotifiers.html</a></li>
+<li><a class="reference internal" href="#page-015-get-ess-alert-alertroleassignments-html" id="id28">7.15&nbsp;&nbsp;&nbsp;PAGE 015: Get /ess/alert/AlertRoleAssignments.html</a></li>
+<li><a class="reference internal" href="#page-016-get-ess-monitor-uploadtosupport-html" id="id29">7.16&nbsp;&nbsp;&nbsp;PAGE 016: Get /ess/monitor/UploadToSupport.html</a></li>
+<li><a class="reference internal" href="#page-017-get-ess-report-detailedreports-html" id="id30">7.17&nbsp;&nbsp;&nbsp;PAGE 017: Get /ess/report/DetailedReports.html</a></li>
+<li><a class="reference internal" href="#page-018-get-ess-audit-showauditreport-html" id="id31">7.18&nbsp;&nbsp;&nbsp;PAGE 018: Get /ess/audit/ShowAuditReport.html</a></li>
+<li><a class="reference internal" href="#page-019-get-ess-report-summary-html" id="id32">7.19&nbsp;&nbsp;&nbsp;PAGE 019: Get /ess/report/Summary.html</a></li>
+<li><a class="reference internal" href="#page-020-get-ess-device-listdevices-html" id="id33">7.20&nbsp;&nbsp;&nbsp;PAGE 020: Get /ess/device/ListDevices.html</a></li>
+<li><a class="reference internal" href="#page-021-get-ess-device-listdeviceprofiles-html" id="id34">7.21&nbsp;&nbsp;&nbsp;PAGE 021: Get /ess/device/ListDeviceProfiles.html</a></li>
+<li><a class="reference internal" href="#page-022-get-ess-room-listrooms-html" id="id35">7.22&nbsp;&nbsp;&nbsp;PAGE 022: Get /ess/room/ListRooms.html</a></li>
+<li><a class="reference internal" href="#page-023-get-ess-person-listpersons-html" id="id36">7.23&nbsp;&nbsp;&nbsp;PAGE 023: Get /ess/person/ListPersons.html</a></li>
+<li><a class="reference internal" href="#page-024-get-ess-product-listproductgroups-html" id="id37">7.24&nbsp;&nbsp;&nbsp;PAGE 024: Get /ess/product/ListProductGroups.html</a></li>
+<li><a class="reference internal" href="#page-025-get-ess-publisher-listpublishers-html" id="id38">7.25&nbsp;&nbsp;&nbsp;PAGE 025: Get /ess/publisher/ListPublishers.html</a></li>
+<li><a class="reference internal" href="#page-026-get-ess-publisher-listltiprofiles-html" id="id39">7.26&nbsp;&nbsp;&nbsp;PAGE 026: Get /ess/publisher/ListLTIProfiles.html</a></li>
+<li><a class="reference internal" href="#page-027-get-ess-organization-listorganizations-html" id="id40">7.27&nbsp;&nbsp;&nbsp;PAGE 027: Get /ess/organization/ListOrganizations.html</a></li>
+<li><a class="reference internal" href="#page-028-get-ess-config-showconfiguration-html" id="id41">7.28&nbsp;&nbsp;&nbsp;PAGE 028: Get /ess/config/ShowConfiguration.html</a></li>
+<li><a class="reference internal" href="#page-029-get-ess-security-listsecuritymodules-html" id="id42">7.29&nbsp;&nbsp;&nbsp;PAGE 029: Get /ess/security/ListSecurityModules.html</a></li>
+<li><a class="reference internal" href="#page-030-get-ess-config-showglobaldefaults-html" id="id43">7.30&nbsp;&nbsp;&nbsp;PAGE 030: Get /ess/config/ShowGlobalDefaults.html</a></li>
+<li><a class="reference internal" href="#page-031-get-ess-certificates-showcertificates-html" id="id44">7.31&nbsp;&nbsp;&nbsp;PAGE 031: Get /ess/certificates/ShowCertificates.html</a></li>
+<li><a class="reference internal" href="#page-032-get-ess-security-listtrustedsystems-html" id="id45">7.32&nbsp;&nbsp;&nbsp;PAGE 032: Get /ess/security/ListTrustedSystems.html</a></li>
+<li><a class="reference internal" href="#page-033-get-ess-security-listhostedserviceproviders-html" id="id46">7.33&nbsp;&nbsp;&nbsp;PAGE 033: Get /ess/security/ListHostedServiceProviders.html</a></li>
+<li><a class="reference internal" href="#page-034-get-ess-system-managesystemindexes-html" id="id47">7.34&nbsp;&nbsp;&nbsp;PAGE 034: Get /ess/system/ManageSystemIndexes.html</a></li>
+<li><a class="reference internal" href="#page-035-get-ess-license-listlicenses-html" id="id48">7.35&nbsp;&nbsp;&nbsp;PAGE 035: Get /ess/license/ListLicenses.html</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#definitions" id="id49">8&nbsp;&nbsp;&nbsp;Definitions</a></li>
+</ul>
+</div>
+<div class="section" id="bench-configuration">
+<h1><a class="toc-backref" href="#id7">1&nbsp;&nbsp;&nbsp;Bench configuration</a></h1>
+<ul class="simple">
+<li>Launched: 2013-10-23 09:53:15</li>
+<li>From: JohnRaymonds-MacBook-Air.local</li>
+<li>Test: <tt class="docutils literal">test_Simple.py Simple.test_page_verify</tt></li>
+<li>Target server: <a class="reference external" href="https://sbess1.echo360.local:8443">https://sbess1.echo360.local:8443</a></li>
+<li>Cycles of concurrent users: [1, 5, 10]</li>
+<li>Cycle duration: 120s</li>
+<li>Sleeptime between request: from 0.0s to 0.5s</li>
+<li>Sleeptime between test case: 1.0s</li>
+<li>Startup delay between thread: 0.5s</li>
+<li>Apdex: <sub>1.5</sub></li>
+<li><a class="reference external" href="http://funkload.nuxeo.org/">FunkLoad</a> version: 1.16.1</li>
+</ul>
+</div>
+<div class="section" id="bench-content">
+<h1><a class="toc-backref" href="#id8">2&nbsp;&nbsp;&nbsp;Bench content</a></h1>
+<p>The test <tt class="docutils literal">Simple.test_page_verify</tt> contains:</p>
+<ul class="simple">
+<li>35 page(s)</li>
+<li>2 redirect(s)</li>
+<li>3 link(s)</li>
+<li>8 image(s)</li>
+<li>0 XML RPC call(s)</li>
+</ul>
+<p>The bench contains:</p>
+<ul class="simple">
+<li>7 tests</li>
+<li>583 pages</li>
+<li>827 requests</li>
+</ul>
+</div>
+<div class="section" id="test-stats">
+<h1><a class="toc-backref" href="#id9">3&nbsp;&nbsp;&nbsp;Test stats</a></h1>
+<p>The number of Successful <strong>Tests</strong> Per Second (STPS) over Concurrent Users (CUs).</p>
+<blockquote>
+<img alt="tests.png" src="tests.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">CUs</th>
+<th class="head">STPS</th>
+<th class="head">TOTAL</th>
+<th class="head">SUCCESS</th>
+<th class="head">ERROR</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1</td>
+<td>0.017</td>
+<td>2</td>
+<td>2</td>
+<td>0.00%</td>
+</tr>
+<tr><td>5</td>
+<td>0.042</td>
+<td>5</td>
+<td>5</td>
+<td>0.00%</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</div>
+<div class="section" id="page-stats">
+<h1><a class="toc-backref" href="#id10">4&nbsp;&nbsp;&nbsp;Page stats</a></h1>
+<p>The number of Successful <strong>Pages</strong> Per Second (SPPS) over Concurrent Users (CUs).
+Note that an XML RPC call count like a page.</p>
+<blockquote>
+<img alt="pages_spps.png" src="pages_spps.png" />
+<img alt="pages.png" src="pages.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">CUs</th>
+<th class="head">Apdex*</th>
+<th class="head">Rating</th>
+<th class="head">SPPS</th>
+<th class="head">maxSPPS</th>
+<th class="head">TOTAL</th>
+<th class="head">SUCCESS</th>
+<th class="head">ERROR</th>
+<th class="head">MIN</th>
+<th class="head">AVG</th>
+<th class="head">MAX</th>
+<th class="head">P10</th>
+<th class="head">MED</th>
+<th class="head">P90</th>
+<th class="head">P95</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1</td>
+<td>0.929</td>
+<td>Good</td>
+<td>0.692</td>
+<td>2.000</td>
+<td>83</td>
+<td>83</td>
+<td>0.00%</td>
+<td>0.371</td>
+<td>1.151</td>
+<td>5.407</td>
+<td>0.388</td>
+<td>0.433</td>
+<td>3.457</td>
+<td>4.980</td>
+</tr>
+<tr><td>5</td>
+<td>0.836</td>
+<td>FAIR</td>
+<td>2.100</td>
+<td>5.000</td>
+<td>252</td>
+<td>252</td>
+<td>0.00%</td>
+<td>0.639</td>
+<td>2.103</td>
+<td>12.025</td>
+<td>0.996</td>
+<td>1.374</td>
+<td>4.520</td>
+<td>7.221</td>
+</tr>
+<tr><td>10</td>
+<td>0.483</td>
+<td>UNACCEPTABLE</td>
+<td>2.067</td>
+<td>7.000</td>
+<td>248</td>
+<td>248</td>
+<td>0.00%</td>
+<td>1.703</td>
+<td>4.594</td>
+<td>22.113</td>
+<td>2.665</td>
+<td>3.069</td>
+<td>6.372</td>
+<td>15.589</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</div>
+<div class="section" id="request-stats">
+<h1><a class="toc-backref" href="#id11">5&nbsp;&nbsp;&nbsp;Request stats</a></h1>
+<p>The number of <strong>Requests</strong> Per Second (RPS) successful or not over Concurrent Users (CUs).</p>
+<blockquote>
+<img alt="requests_rps.png" src="requests_rps.png" />
+<img alt="requests.png" src="requests.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">CUs</th>
+<th class="head">Apdex*</th>
+<th class="head">Rating*</th>
+<th class="head">RPS</th>
+<th class="head">maxRPS</th>
+<th class="head">TOTAL</th>
+<th class="head">SUCCESS</th>
+<th class="head">ERROR</th>
+<th class="head">MIN</th>
+<th class="head">AVG</th>
+<th class="head">MAX</th>
+<th class="head">P10</th>
+<th class="head">MED</th>
+<th class="head">P90</th>
+<th class="head">P95</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1</td>
+<td>0.929</td>
+<td>Good</td>
+<td>0.933</td>
+<td>3.000</td>
+<td>112</td>
+<td>112</td>
+<td>0.00%</td>
+<td>0.368</td>
+<td>0.853</td>
+<td>3.499</td>
+<td>0.372</td>
+<td>0.399</td>
+<td>3.392</td>
+<td>3.440</td>
+</tr>
+<tr><td>5</td>
+<td>0.836</td>
+<td>FAIR</td>
+<td>2.975</td>
+<td>5.000</td>
+<td>357</td>
+<td>357</td>
+<td>0.00%</td>
+<td>0.639</td>
+<td>1.485</td>
+<td>5.137</td>
+<td>0.996</td>
+<td>1.344</td>
+<td>1.688</td>
+<td>2.096</td>
+</tr>
+<tr><td>10</td>
+<td>0.483</td>
+<td>UNACCEPTABLE</td>
+<td>2.983</td>
+<td>7.000</td>
+<td>358</td>
+<td>358</td>
+<td>0.00%</td>
+<td>1.703</td>
+<td>3.183</td>
+<td>6.376</td>
+<td>2.686</td>
+<td>3.046</td>
+<td>3.364</td>
+<td>3.744</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</div>
+<div class="section" id="slowest-requests">
+<h1><a class="toc-backref" href="#id12">6&nbsp;&nbsp;&nbsp;Slowest requests</a></h1>
+<p>The 5 slowest average response time during the best cycle with <strong>1</strong> CUs:</p>
+<ul>
+<li><p class="first">In page 023, Apdex rating: POOR, avg response time: 3.46s, get: <tt class="docutils literal">/ess/person/ListPersons.html</tt>
+<cite>Get /ess/person/ListPersons.html</cite></p>
+</li>
+<li><p class="first">In page 017, Apdex rating: POOR, avg response time: 3.41s, get: <tt class="docutils literal">/ess/report/DetailedReports.html</tt>
+<cite>Get /ess/report/DetailedReports.html</cite></p>
+</li>
+<li><p class="first">In page 001, Apdex rating: POOR, avg response time: 3.40s, post: <a href="#id1"><span class="problematic" id="id2">``</span></a>``
+``</p>
+<div class="system-message" id="id1">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">/Users/johnraymond/code/funkload/funkload-demo/esspages/rep/test_page_verify-20131023T095315/index.rst</tt>, line 112); <em><a href="#id2">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</div>
+</li>
+<li><p class="first">In page 003, Apdex rating: POOR, avg response time: 3.39s, image: <tt class="docutils literal"><span class="pre">/ess/assets/static/org/apache/tapestry/contrib/table/components/inserted/arrow-up.gif</span></tt>
+``</p>
+</li>
+<li><p class="first">In page 030, Apdex rating: FAIR, avg response time: 1.97s, get: <tt class="docutils literal">/ess/config/ShowGlobalDefaults.html</tt>
+<cite>Get /ess/config/ShowGlobalDefaults.html</cite></p>
+</li>
+</ul>
+</div>
+<div class="section" id="page-detail-stats">
+<h1><a class="toc-backref" href="#id13">7&nbsp;&nbsp;&nbsp;Page detail stats</a></h1>
+<div class="section" id="page-001">
+<h2><a class="toc-backref" href="#id14">7.1&nbsp;&nbsp;&nbsp;PAGE 001:</a></h2>
+<ul>
+<li><p class="first">Req: 001, post, url <a href="#id3"><span class="problematic" id="id4">``</span></a><a href="#id5"><span class="problematic" id="id6">``</span></a></p>
+<div class="system-message" id="id3">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">/Users/johnraymond/code/funkload/funkload-demo/esspages/rep/test_page_verify-20131023T095315/index.rst</tt>, line 126); <em><a href="#id4">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</div>
+<div class="system-message" id="id5">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">/Users/johnraymond/code/funkload/funkload-demo/esspages/rep/test_page_verify-20131023T095315/index.rst</tt>, line 126); <em><a href="#id6">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</div>
+<blockquote>
+<img alt="request_001.001.png" src="request_001.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">3.376</p>
+</td>
+<td><p class="first last">3.398</p>
+</td>
+<td><p class="first last">3.440</p>
+</td>
+<td><p class="first last">3.376</p>
+</td>
+<td><p class="first last">3.379</p>
+</td>
+<td><p class="first last">3.440</p>
+</td>
+<td><p class="first last">3.440</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.929</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">7</p>
+</td>
+<td><p class="first last">7</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.812</p>
+</td>
+<td><p class="first last">1.391</p>
+</td>
+<td><p class="first last">3.374</p>
+</td>
+<td><p class="first last">0.812</p>
+</td>
+<td><p class="first last">1.054</p>
+</td>
+<td><p class="first last">3.374</p>
+</td>
+<td><p class="first last">3.374</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.562</p>
+</td>
+<td><p class="first last">2.841</p>
+</td>
+<td><p class="first last">3.229</p>
+</td>
+<td><p class="first last">2.562</p>
+</td>
+<td><p class="first last">2.731</p>
+</td>
+<td><p class="first last">3.229</p>
+</td>
+<td><p class="first last">3.229</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-002-get-ess-schedule-listschedulerules-html">
+<h2><a class="toc-backref" href="#id15">7.2&nbsp;&nbsp;&nbsp;PAGE 002: Get /ess/schedule/ListScheduleRules.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/schedule/ListScheduleRules.html</tt></p>
+<blockquote>
+<img alt="request_002.001.png" src="request_002.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.371</p>
+</td>
+<td><p class="first last">0.372</p>
+</td>
+<td><p class="first last">0.373</p>
+</td>
+<td><p class="first last">0.371</p>
+</td>
+<td><p class="first last">0.372</p>
+</td>
+<td><p class="first last">0.373</p>
+</td>
+<td><p class="first last">0.373</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.889</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">9</p>
+</td>
+<td><p class="first last">9</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.670</p>
+</td>
+<td><p class="first last">1.225</p>
+</td>
+<td><p class="first last">1.645</p>
+</td>
+<td><p class="first last">0.670</p>
+</td>
+<td><p class="first last">1.215</p>
+</td>
+<td><p class="first last">1.645</p>
+</td>
+<td><p class="first last">1.645</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">7</p>
+</td>
+<td><p class="first last">7</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.950</p>
+</td>
+<td><p class="first last">2.791</p>
+</td>
+<td><p class="first last">3.285</p>
+</td>
+<td><p class="first last">1.950</p>
+</td>
+<td><p class="first last">2.820</p>
+</td>
+<td><p class="first last">3.285</p>
+</td>
+<td><p class="first last">3.285</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+<li><p class="first">Req: 002, get, url <tt class="docutils literal">/ess/login.jsp</tt></p>
+<blockquote>
+<img alt="request_002.002.png" src="request_002.002.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.387</p>
+</td>
+<td><p class="first last">0.389</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.387</p>
+</td>
+<td><p class="first last">0.389</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.833</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">9</p>
+</td>
+<td><p class="first last">9</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.348</p>
+</td>
+<td><p class="first last">1.477</p>
+</td>
+<td><p class="first last">1.703</p>
+</td>
+<td><p class="first last">1.348</p>
+</td>
+<td><p class="first last">1.374</p>
+</td>
+<td><p class="first last">1.703</p>
+</td>
+<td><p class="first last">1.703</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">8</p>
+</td>
+<td><p class="first last">8</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.703</p>
+</td>
+<td><p class="first last">3.002</p>
+</td>
+<td><p class="first last">3.383</p>
+</td>
+<td><p class="first last">1.703</p>
+</td>
+<td><p class="first last">3.057</p>
+</td>
+<td><p class="first last">3.383</p>
+</td>
+<td><p class="first last">3.383</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-003-post-for-login-against-ldap">
+<h2><a class="toc-backref" href="#id16">7.3&nbsp;&nbsp;&nbsp;PAGE 003: Post for login against LDAP</a></h2>
+<ul>
+<li><p class="first">Req: 001, post, url <tt class="docutils literal">/ess/j_spring_security_check</tt></p>
+<blockquote>
+<img alt="request_003.001.png" src="request_003.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.441</p>
+</td>
+<td><p class="first last">0.444</p>
+</td>
+<td><p class="first last">0.446</p>
+</td>
+<td><p class="first last">0.441</p>
+</td>
+<td><p class="first last">0.445</p>
+</td>
+<td><p class="first last">0.446</p>
+</td>
+<td><p class="first last">0.446</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.750</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.005</p>
+</td>
+<td><p class="first last">1.642</p>
+</td>
+<td><p class="first last">4.509</p>
+</td>
+<td><p class="first last">1.072</p>
+</td>
+<td><p class="first last">1.568</p>
+</td>
+<td><p class="first last">4.509</p>
+</td>
+<td><p class="first last">4.509</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.389</p>
+</td>
+<td><p class="first last">UNACCEPTABLE</p>
+</td>
+<td><p class="first last">9</p>
+</td>
+<td><p class="first last">9</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.877</p>
+</td>
+<td><p class="first last">3.744</p>
+</td>
+<td><p class="first last">6.036</p>
+</td>
+<td><p class="first last">2.877</p>
+</td>
+<td><p class="first last">3.127</p>
+</td>
+<td><p class="first last">6.036</p>
+</td>
+<td><p class="first last">6.036</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+<li><p class="first">Req: 002, get, url <tt class="docutils literal">/ess/schedule/ListScheduleRules.html</tt></p>
+<blockquote>
+<img alt="request_003.002.png" src="request_003.002.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.485</p>
+</td>
+<td><p class="first last">0.489</p>
+</td>
+<td><p class="first last">0.493</p>
+</td>
+<td><p class="first last">0.485</p>
+</td>
+<td><p class="first last">0.490</p>
+</td>
+<td><p class="first last">0.493</p>
+</td>
+<td><p class="first last">0.493</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.800</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.723</p>
+</td>
+<td><p class="first last">1.432</p>
+</td>
+<td><p class="first last">1.743</p>
+</td>
+<td><p class="first last">1.073</p>
+</td>
+<td><p class="first last">1.408</p>
+</td>
+<td><p class="first last">1.743</p>
+</td>
+<td><p class="first last">1.743</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.735</p>
+</td>
+<td><p class="first last">3.221</p>
+</td>
+<td><p class="first last">3.428</p>
+</td>
+<td><p class="first last">3.088</p>
+</td>
+<td><p class="first last">3.409</p>
+</td>
+<td><p class="first last">3.428</p>
+</td>
+<td><p class="first last">3.428</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+<li><p class="first">Req: 003, link, url <tt class="docutils literal">/ess/image/favicon.ico</tt></p>
+<blockquote>
+<img alt="request_003.003.png" src="request_003.003.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.375</p>
+</td>
+<td><p class="first last">0.376</p>
+</td>
+<td><p class="first last">0.378</p>
+</td>
+<td><p class="first last">0.375</p>
+</td>
+<td><p class="first last">0.377</p>
+</td>
+<td><p class="first last">0.378</p>
+</td>
+<td><p class="first last">0.378</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.800</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.901</p>
+</td>
+<td><p class="first last">1.334</p>
+</td>
+<td><p class="first last">1.580</p>
+</td>
+<td><p class="first last">1.223</p>
+</td>
+<td><p class="first last">1.249</p>
+</td>
+<td><p class="first last">1.580</p>
+</td>
+<td><p class="first last">1.580</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.913</p>
+</td>
+<td><p class="first last">3.145</p>
+</td>
+<td><p class="first last">3.245</p>
+</td>
+<td><p class="first last">2.925</p>
+</td>
+<td><p class="first last">3.239</p>
+</td>
+<td><p class="first last">3.245</p>
+</td>
+<td><p class="first last">3.245</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+<li><p class="first">Req: 004, link, url <tt class="docutils literal">/ess/style/ess.css</tt></p>
+<blockquote>
+<img alt="request_003.004.png" src="request_003.004.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.373</p>
+</td>
+<td><p class="first last">0.375</p>
+</td>
+<td><p class="first last">0.377</p>
+</td>
+<td><p class="first last">0.373</p>
+</td>
+<td><p class="first last">0.375</p>
+</td>
+<td><p class="first last">0.377</p>
+</td>
+<td><p class="first last">0.377</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.750</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.006</p>
+</td>
+<td><p class="first last">1.475</p>
+</td>
+<td><p class="first last">1.682</p>
+</td>
+<td><p class="first last">1.338</p>
+</td>
+<td><p class="first last">1.661</p>
+</td>
+<td><p class="first last">1.682</p>
+</td>
+<td><p class="first last">1.682</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.450</p>
+</td>
+<td><p class="first last">UNACCEPTABLE</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">3.029</p>
+</td>
+<td><p class="first last">3.431</p>
+</td>
+<td><p class="first last">6.369</p>
+</td>
+<td><p class="first last">3.031</p>
+</td>
+<td><p class="first last">3.037</p>
+</td>
+<td><p class="first last">6.369</p>
+</td>
+<td><p class="first last">6.369</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+<li><p class="first">Req: 005, image, url <tt class="docutils literal"><span class="pre">/ess/image/header-logo.jpg</span></tt></p>
+<blockquote>
+<img alt="request_003.005.png" src="request_003.005.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.372</p>
+</td>
+<td><p class="first last">0.373</p>
+</td>
+<td><p class="first last">0.374</p>
+</td>
+<td><p class="first last">0.372</p>
+</td>
+<td><p class="first last">0.374</p>
+</td>
+<td><p class="first last">0.374</p>
+</td>
+<td><p class="first last">0.374</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.750</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.341</p>
+</td>
+<td><p class="first last">2.115</p>
+</td>
+<td><p class="first last">4.688</p>
+</td>
+<td><p class="first last">1.341</p>
+</td>
+<td><p class="first last">1.668</p>
+</td>
+<td><p class="first last">4.688</p>
+</td>
+<td><p class="first last">4.688</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.450</p>
+</td>
+<td><p class="first last">UNACCEPTABLE</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.696</p>
+</td>
+<td><p class="first last">3.527</p>
+</td>
+<td><p class="first last">6.376</p>
+</td>
+<td><p class="first last">3.032</p>
+</td>
+<td><p class="first last">3.354</p>
+</td>
+<td><p class="first last">6.376</p>
+</td>
+<td><p class="first last">6.376</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+<li><p class="first">Req: 006, image, url <tt class="docutils literal"><span class="pre">/ess/assets/static/image/loader-snake.gif</span></tt></p>
+<blockquote>
+<img alt="request_003.006.png" src="request_003.006.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.370</p>
+</td>
+<td><p class="first last">0.370</p>
+</td>
+<td><p class="first last">0.371</p>
+</td>
+<td><p class="first last">0.370</p>
+</td>
+<td><p class="first last">0.370</p>
+</td>
+<td><p class="first last">0.371</p>
+</td>
+<td><p class="first last">0.371</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.850</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.021</p>
+</td>
+<td><p class="first last">1.379</p>
+</td>
+<td><p class="first last">1.679</p>
+</td>
+<td><p class="first last">1.024</p>
+</td>
+<td><p class="first last">1.353</p>
+</td>
+<td><p class="first last">1.679</p>
+</td>
+<td><p class="first last">1.679</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.699</p>
+</td>
+<td><p class="first last">3.131</p>
+</td>
+<td><p class="first last">3.366</p>
+</td>
+<td><p class="first last">3.029</p>
+</td>
+<td><p class="first last">3.046</p>
+</td>
+<td><p class="first last">3.366</p>
+</td>
+<td><p class="first last">3.366</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+<li><p class="first">Req: 007, image, url <tt class="docutils literal"><span class="pre">/ess/assets/static/org/apache/tapestry/contrib/table/components/inserted/arrow-up.gif</span></tt></p>
+<blockquote>
+<img alt="request_003.007.png" src="request_003.007.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">3.379</p>
+</td>
+<td><p class="first last">3.393</p>
+</td>
+<td><p class="first last">3.420</p>
+</td>
+<td><p class="first last">3.379</p>
+</td>
+<td><p class="first last">3.380</p>
+</td>
+<td><p class="first last">3.420</p>
+</td>
+<td><p class="first last">3.420</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.650</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.311</p>
+</td>
+<td><p class="first last">1.855</p>
+</td>
+<td><p class="first last">4.669</p>
+</td>
+<td><p class="first last">1.315</p>
+</td>
+<td><p class="first last">1.652</p>
+</td>
+<td><p class="first last">4.669</p>
+</td>
+<td><p class="first last">4.669</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.450</p>
+</td>
+<td><p class="first last">UNACCEPTABLE</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.990</p>
+</td>
+<td><p class="first last">3.533</p>
+</td>
+<td><p class="first last">6.344</p>
+</td>
+<td><p class="first last">3.004</p>
+</td>
+<td><p class="first last">3.331</p>
+</td>
+<td><p class="first last">6.344</p>
+</td>
+<td><p class="first last">6.344</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-004-get-ess-adhoc-listadhocs-html">
+<h2><a class="toc-backref" href="#id17">7.4&nbsp;&nbsp;&nbsp;PAGE 004: Get /ess/adhoc/ListAdHocs.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/adhoc/ListAdHocs.html</tt></p>
+<blockquote>
+<img alt="request_004.001.png" src="request_004.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.417</p>
+</td>
+<td><p class="first last">0.421</p>
+</td>
+<td><p class="first last">0.427</p>
+</td>
+<td><p class="first last">0.417</p>
+</td>
+<td><p class="first last">0.418</p>
+</td>
+<td><p class="first last">0.427</p>
+</td>
+<td><p class="first last">0.427</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.850</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.993</p>
+</td>
+<td><p class="first last">1.684</p>
+</td>
+<td><p class="first last">4.727</p>
+</td>
+<td><p class="first last">1.095</p>
+</td>
+<td><p class="first last">1.400</p>
+</td>
+<td><p class="first last">4.727</p>
+</td>
+<td><p class="first last">4.727</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.691</p>
+</td>
+<td><p class="first last">3.024</p>
+</td>
+<td><p class="first last">3.383</p>
+</td>
+<td><p class="first last">2.777</p>
+</td>
+<td><p class="first last">3.006</p>
+</td>
+<td><p class="first last">3.383</p>
+</td>
+<td><p class="first last">3.383</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+<li><p class="first">Req: 002, image, url <tt class="docutils literal"><span class="pre">/ess/assets/static/org/apache/tapestry/contrib/table/components/inserted/arrow-down.gif</span></tt></p>
+<blockquote>
+<img alt="request_004.002.png" src="request_004.002.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.372</p>
+</td>
+<td><p class="first last">0.373</p>
+</td>
+<td><p class="first last">0.375</p>
+</td>
+<td><p class="first last">0.372</p>
+</td>
+<td><p class="first last">0.373</p>
+</td>
+<td><p class="first last">0.375</p>
+</td>
+<td><p class="first last">0.375</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.800</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.952</p>
+</td>
+<td><p class="first last">1.360</p>
+</td>
+<td><p class="first last">1.637</p>
+</td>
+<td><p class="first last">0.970</p>
+</td>
+<td><p class="first last">1.300</p>
+</td>
+<td><p class="first last">1.637</p>
+</td>
+<td><p class="first last">1.637</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.985</p>
+</td>
+<td><p class="first last">3.274</p>
+</td>
+<td><p class="first last">3.312</p>
+</td>
+<td><p class="first last">3.301</p>
+</td>
+<td><p class="first last">3.307</p>
+</td>
+<td><p class="first last">3.312</p>
+</td>
+<td><p class="first last">3.312</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-005-get-ess-download-listdownloads-html">
+<h2><a class="toc-backref" href="#id18">7.5&nbsp;&nbsp;&nbsp;PAGE 005: Get /ess/download/ListDownloads.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/download/ListDownloads.html</tt></p>
+<blockquote>
+<img alt="request_005.001.png" src="request_005.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.394</p>
+</td>
+<td><p class="first last">0.395</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.395</p>
+</td>
+<td><p class="first last">0.395</p>
+</td>
+<td><p class="first last">0.395</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.850</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.048</p>
+</td>
+<td><p class="first last">1.393</p>
+</td>
+<td><p class="first last">1.703</p>
+</td>
+<td><p class="first last">1.182</p>
+</td>
+<td><p class="first last">1.336</p>
+</td>
+<td><p class="first last">1.703</p>
+</td>
+<td><p class="first last">1.703</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.630</p>
+</td>
+<td><p class="first last">2.963</p>
+</td>
+<td><p class="first last">3.306</p>
+</td>
+<td><p class="first last">2.811</p>
+</td>
+<td><p class="first last">3.009</p>
+</td>
+<td><p class="first last">3.306</p>
+</td>
+<td><p class="first last">3.306</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-006-get-ess-schedule-listschedulerules-html">
+<h2><a class="toc-backref" href="#id19">7.6&nbsp;&nbsp;&nbsp;PAGE 006: Get /ess/schedule/ListScheduleRules.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/schedule/ListScheduleRules.html</tt></p>
+<blockquote>
+<img alt="request_006.001.png" src="request_006.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.485</p>
+</td>
+<td><p class="first last">0.498</p>
+</td>
+<td><p class="first last">0.518</p>
+</td>
+<td><p class="first last">0.485</p>
+</td>
+<td><p class="first last">0.489</p>
+</td>
+<td><p class="first last">0.518</p>
+</td>
+<td><p class="first last">0.518</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.800</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.052</p>
+</td>
+<td><p class="first last">1.441</p>
+</td>
+<td><p class="first last">1.729</p>
+</td>
+<td><p class="first last">1.103</p>
+</td>
+<td><p class="first last">1.452</p>
+</td>
+<td><p class="first last">1.729</p>
+</td>
+<td><p class="first last">1.729</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.400</p>
+</td>
+<td><p class="first last">UNACCEPTABLE</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.922</p>
+</td>
+<td><p class="first last">3.795</p>
+</td>
+<td><p class="first last">6.364</p>
+</td>
+<td><p class="first last">2.957</p>
+</td>
+<td><p class="first last">3.257</p>
+</td>
+<td><p class="first last">6.364</p>
+</td>
+<td><p class="first last">6.364</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-007-get-ess-course-listcourses-html">
+<h2><a class="toc-backref" href="#id20">7.7&nbsp;&nbsp;&nbsp;PAGE 007: Get /ess/course/ListCourses.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/course/ListCourses.html</tt></p>
+<blockquote>
+<img alt="request_007.001.png" src="request_007.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.456</p>
+</td>
+<td><p class="first last">0.457</p>
+</td>
+<td><p class="first last">0.458</p>
+</td>
+<td><p class="first last">0.456</p>
+</td>
+<td><p class="first last">0.458</p>
+</td>
+<td><p class="first last">0.458</p>
+</td>
+<td><p class="first last">0.458</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.850</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.797</p>
+</td>
+<td><p class="first last">1.330</p>
+</td>
+<td><p class="first last">1.616</p>
+</td>
+<td><p class="first last">1.002</p>
+</td>
+<td><p class="first last">1.475</p>
+</td>
+<td><p class="first last">1.616</p>
+</td>
+<td><p class="first last">1.616</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.542</p>
+</td>
+<td><p class="first last">3.007</p>
+</td>
+<td><p class="first last">3.321</p>
+</td>
+<td><p class="first last">2.863</p>
+</td>
+<td><p class="first last">3.100</p>
+</td>
+<td><p class="first last">3.321</p>
+</td>
+<td><p class="first last">3.321</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+<li><p class="first">Req: 002, image, url <tt class="docutils literal">/ess/image/firstpage_disable.gif</tt></p>
+<blockquote>
+<img alt="request_007.002.png" src="request_007.002.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">0.833</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">3</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.372</p>
+</td>
+<td><p class="first last">1.386</p>
+</td>
+<td><p class="first last">3.414</p>
+</td>
+<td><p class="first last">0.372</p>
+</td>
+<td><p class="first last">0.373</p>
+</td>
+<td><p class="first last">3.414</p>
+</td>
+<td><p class="first last">3.414</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.900</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.922</p>
+</td>
+<td><p class="first last">1.277</p>
+</td>
+<td><p class="first last">1.576</p>
+</td>
+<td><p class="first last">1.227</p>
+</td>
+<td><p class="first last">1.244</p>
+</td>
+<td><p class="first last">1.576</p>
+</td>
+<td><p class="first last">1.576</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.600</p>
+</td>
+<td><p class="first last">3.125</p>
+</td>
+<td><p class="first last">3.269</p>
+</td>
+<td><p class="first last">2.926</p>
+</td>
+<td><p class="first last">3.251</p>
+</td>
+<td><p class="first last">3.269</p>
+</td>
+<td><p class="first last">3.269</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+<li><p class="first">Req: 003, image, url <tt class="docutils literal">/ess/image/previouspage_disable.gif</tt></p>
+<blockquote>
+<img alt="request_007.003.png" src="request_007.003.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">0.750</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.368</p>
+</td>
+<td><p class="first last">1.893</p>
+</td>
+<td><p class="first last">3.418</p>
+</td>
+<td><p class="first last">0.368</p>
+</td>
+<td><p class="first last">3.418</p>
+</td>
+<td><p class="first last">3.418</p>
+</td>
+<td><p class="first last">3.418</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.800</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.005</p>
+</td>
+<td><p class="first last">1.680</p>
+</td>
+<td><p class="first last">4.357</p>
+</td>
+<td><p class="first last">1.008</p>
+</td>
+<td><p class="first last">1.356</p>
+</td>
+<td><p class="first last">4.357</p>
+</td>
+<td><p class="first last">4.357</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.699</p>
+</td>
+<td><p class="first last">3.029</p>
+</td>
+<td><p class="first last">3.364</p>
+</td>
+<td><p class="first last">2.701</p>
+</td>
+<td><p class="first last">3.032</p>
+</td>
+<td><p class="first last">3.364</p>
+</td>
+<td><p class="first last">3.364</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+<li><p class="first">Req: 004, image, url <tt class="docutils literal">/ess/image/nextpage.gif</tt></p>
+<blockquote>
+<img alt="request_007.004.png" src="request_007.004.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.369</p>
+</td>
+<td><p class="first last">0.370</p>
+</td>
+<td><p class="first last">0.371</p>
+</td>
+<td><p class="first last">0.369</p>
+</td>
+<td><p class="first last">0.371</p>
+</td>
+<td><p class="first last">0.371</p>
+</td>
+<td><p class="first last">0.371</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.800</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.028</p>
+</td>
+<td><p class="first last">1.449</p>
+</td>
+<td><p class="first last">1.688</p>
+</td>
+<td><p class="first last">1.339</p>
+</td>
+<td><p class="first last">1.354</p>
+</td>
+<td><p class="first last">1.688</p>
+</td>
+<td><p class="first last">1.688</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.450</p>
+</td>
+<td><p class="first last">UNACCEPTABLE</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">3.031</p>
+</td>
+<td><p class="first last">3.561</p>
+</td>
+<td><p class="first last">6.368</p>
+</td>
+<td><p class="first last">3.039</p>
+</td>
+<td><p class="first last">3.355</p>
+</td>
+<td><p class="first last">6.368</p>
+</td>
+<td><p class="first last">6.368</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+<li><p class="first">Req: 005, image, url <tt class="docutils literal">/ess/image/lastpage.gif</tt></p>
+<blockquote>
+<img alt="request_007.005.png" src="request_007.005.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.370</p>
+</td>
+<td><p class="first last">0.370</p>
+</td>
+<td><p class="first last">0.370</p>
+</td>
+<td><p class="first last">0.370</p>
+</td>
+<td><p class="first last">0.370</p>
+</td>
+<td><p class="first last">0.370</p>
+</td>
+<td><p class="first last">0.370</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.800</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.019</p>
+</td>
+<td><p class="first last">1.446</p>
+</td>
+<td><p class="first last">1.684</p>
+</td>
+<td><p class="first last">1.342</p>
+</td>
+<td><p class="first last">1.359</p>
+</td>
+<td><p class="first last">1.684</p>
+</td>
+<td><p class="first last">1.684</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.694</p>
+</td>
+<td><p class="first last">3.065</p>
+</td>
+<td><p class="first last">3.353</p>
+</td>
+<td><p class="first last">2.697</p>
+</td>
+<td><p class="first last">3.039</p>
+</td>
+<td><p class="first last">3.353</p>
+</td>
+<td><p class="first last">3.353</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-008-get-ess-term-listterms-html">
+<h2><a class="toc-backref" href="#id21">7.8&nbsp;&nbsp;&nbsp;PAGE 008: Get /ess/term/ListTerms.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/term/ListTerms.html</tt></p>
+<blockquote>
+<img alt="request_008.001.png" src="request_008.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.416</p>
+</td>
+<td><p class="first last">0.417</p>
+</td>
+<td><p class="first last">0.418</p>
+</td>
+<td><p class="first last">0.416</p>
+</td>
+<td><p class="first last">0.418</p>
+</td>
+<td><p class="first last">0.418</p>
+</td>
+<td><p class="first last">0.418</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.850</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.027</p>
+</td>
+<td><p class="first last">1.342</p>
+</td>
+<td><p class="first last">1.640</p>
+</td>
+<td><p class="first last">1.233</p>
+</td>
+<td><p class="first last">1.266</p>
+</td>
+<td><p class="first last">1.640</p>
+</td>
+<td><p class="first last">1.640</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.450</p>
+</td>
+<td><p class="first last">UNACCEPTABLE</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.633</p>
+</td>
+<td><p class="first last">3.352</p>
+</td>
+<td><p class="first last">6.346</p>
+</td>
+<td><p class="first last">2.901</p>
+</td>
+<td><p class="first last">3.034</p>
+</td>
+<td><p class="first last">6.346</p>
+</td>
+<td><p class="first last">6.346</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-009-get-ess-library-listassets-html">
+<h2><a class="toc-backref" href="#id22">7.9&nbsp;&nbsp;&nbsp;PAGE 009: Get /ess/library/ListAssets.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/library/ListAssets.html</tt></p>
+<blockquote>
+<img alt="request_009.001.png" src="request_009.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.399</p>
+</td>
+<td><p class="first last">0.400</p>
+</td>
+<td><p class="first last">0.400</p>
+</td>
+<td><p class="first last">0.399</p>
+</td>
+<td><p class="first last">0.400</p>
+</td>
+<td><p class="first last">0.400</p>
+</td>
+<td><p class="first last">0.400</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.889</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">9</p>
+</td>
+<td><p class="first last">9</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.857</p>
+</td>
+<td><p class="first last">1.614</p>
+</td>
+<td><p class="first last">4.488</p>
+</td>
+<td><p class="first last">0.857</p>
+</td>
+<td><p class="first last">1.283</p>
+</td>
+<td><p class="first last">4.488</p>
+</td>
+<td><p class="first last">4.488</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.450</p>
+</td>
+<td><p class="first last">UNACCEPTABLE</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.503</p>
+</td>
+<td><p class="first last">3.233</p>
+</td>
+<td><p class="first last">6.372</p>
+</td>
+<td><p class="first last">2.747</p>
+</td>
+<td><p class="first last">2.959</p>
+</td>
+<td><p class="first last">6.372</p>
+</td>
+<td><p class="first last">6.372</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-010-get-ess-capture-listcaptures-html">
+<h2><a class="toc-backref" href="#id23">7.10&nbsp;&nbsp;&nbsp;PAGE 010: Get /ess/capture/ListCaptures.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/capture/ListCaptures.html</tt></p>
+<blockquote>
+<img alt="request_010.001.png" src="request_010.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.596</p>
+</td>
+<td><p class="first last">0.598</p>
+</td>
+<td><p class="first last">0.600</p>
+</td>
+<td><p class="first last">0.596</p>
+</td>
+<td><p class="first last">0.600</p>
+</td>
+<td><p class="first last">0.600</p>
+</td>
+<td><p class="first last">0.600</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.750</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">8</p>
+</td>
+<td><p class="first last">8</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.396</p>
+</td>
+<td><p class="first last">1.578</p>
+</td>
+<td><p class="first last">1.792</p>
+</td>
+<td><p class="first last">1.396</p>
+</td>
+<td><p class="first last">1.567</p>
+</td>
+<td><p class="first last">1.792</p>
+</td>
+<td><p class="first last">1.792</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">3.039</p>
+</td>
+<td><p class="first last">3.184</p>
+</td>
+<td><p class="first last">3.337</p>
+</td>
+<td><p class="first last">3.050</p>
+</td>
+<td><p class="first last">3.211</p>
+</td>
+<td><p class="first last">3.337</p>
+</td>
+<td><p class="first last">3.337</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-011-get-ess-task-listprocessingtasks-html">
+<h2><a class="toc-backref" href="#id24">7.11&nbsp;&nbsp;&nbsp;PAGE 011: Get /ess/task/ListProcessingTasks.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/task/ListProcessingTasks.html</tt></p>
+<blockquote>
+<img alt="request_011.001.png" src="request_011.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">0.750</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.398</p>
+</td>
+<td><p class="first last">1.923</p>
+</td>
+<td><p class="first last">3.448</p>
+</td>
+<td><p class="first last">0.398</p>
+</td>
+<td><p class="first last">3.448</p>
+</td>
+<td><p class="first last">3.448</p>
+</td>
+<td><p class="first last">3.448</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.938</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">8</p>
+</td>
+<td><p class="first last">8</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.662</p>
+</td>
+<td><p class="first last">1.522</p>
+</td>
+<td><p class="first last">4.324</p>
+</td>
+<td><p class="first last">0.662</p>
+</td>
+<td><p class="first last">1.320</p>
+</td>
+<td><p class="first last">4.324</p>
+</td>
+<td><p class="first last">4.324</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.520</p>
+</td>
+<td><p class="first last">2.836</p>
+</td>
+<td><p class="first last">3.079</p>
+</td>
+<td><p class="first last">2.547</p>
+</td>
+<td><p class="first last">2.857</p>
+</td>
+<td><p class="first last">3.079</p>
+</td>
+<td><p class="first last">3.079</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-012-get-ess-device-listunmanageddevices-html">
+<h2><a class="toc-backref" href="#id25">7.12&nbsp;&nbsp;&nbsp;PAGE 012: Get /ess/device/ListUnmanagedDevices.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/device/ListUnmanagedDevices.html</tt></p>
+<blockquote>
+<img alt="request_012.001.png" src="request_012.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">0.750</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.429</p>
+</td>
+<td><p class="first last">1.950</p>
+</td>
+<td><p class="first last">3.471</p>
+</td>
+<td><p class="first last">0.429</p>
+</td>
+<td><p class="first last">3.471</p>
+</td>
+<td><p class="first last">3.471</p>
+</td>
+<td><p class="first last">3.471</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.875</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">8</p>
+</td>
+<td><p class="first last">8</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.889</p>
+</td>
+<td><p class="first last">1.232</p>
+</td>
+<td><p class="first last">1.592</p>
+</td>
+<td><p class="first last">0.889</p>
+</td>
+<td><p class="first last">1.202</p>
+</td>
+<td><p class="first last">1.592</p>
+</td>
+<td><p class="first last">1.592</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.584</p>
+</td>
+<td><p class="first last">3.223</p>
+</td>
+<td><p class="first last">5.837</p>
+</td>
+<td><p class="first last">2.593</p>
+</td>
+<td><p class="first last">3.007</p>
+</td>
+<td><p class="first last">5.837</p>
+</td>
+<td><p class="first last">5.837</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-013-get-ess-alert-listalerts-html">
+<h2><a class="toc-backref" href="#id26">7.13&nbsp;&nbsp;&nbsp;PAGE 013: Get /ess/alert/ListAlerts.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/alert/ListAlerts.html</tt></p>
+<blockquote>
+<img alt="request_013.001.png" src="request_013.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.467</p>
+</td>
+<td><p class="first last">0.470</p>
+</td>
+<td><p class="first last">0.473</p>
+</td>
+<td><p class="first last">0.467</p>
+</td>
+<td><p class="first last">0.473</p>
+</td>
+<td><p class="first last">0.473</p>
+</td>
+<td><p class="first last">0.473</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.938</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">8</p>
+</td>
+<td><p class="first last">8</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.072</p>
+</td>
+<td><p class="first last">1.339</p>
+</td>
+<td><p class="first last">1.683</p>
+</td>
+<td><p class="first last">1.072</p>
+</td>
+<td><p class="first last">1.385</p>
+</td>
+<td><p class="first last">1.683</p>
+</td>
+<td><p class="first last">1.683</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.781</p>
+</td>
+<td><p class="first last">3.082</p>
+</td>
+<td><p class="first last">3.340</p>
+</td>
+<td><p class="first last">2.958</p>
+</td>
+<td><p class="first last">3.063</p>
+</td>
+<td><p class="first last">3.340</p>
+</td>
+<td><p class="first last">3.340</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-014-get-ess-notifier-listnotifiers-html">
+<h2><a class="toc-backref" href="#id27">7.14&nbsp;&nbsp;&nbsp;PAGE 014: Get /ess/notifier/ListNotifiers.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/notifier/ListNotifiers.html</tt></p>
+<blockquote>
+<img alt="request_014.001.png" src="request_014.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.389</p>
+</td>
+<td><p class="first last">0.391</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.389</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.929</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">7</p>
+</td>
+<td><p class="first last">7</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.771</p>
+</td>
+<td><p class="first last">1.583</p>
+</td>
+<td><p class="first last">4.470</p>
+</td>
+<td><p class="first last">0.771</p>
+</td>
+<td><p class="first last">1.104</p>
+</td>
+<td><p class="first last">4.470</p>
+</td>
+<td><p class="first last">4.470</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.555</p>
+</td>
+<td><p class="first last">3.090</p>
+</td>
+<td><p class="first last">5.623</p>
+</td>
+<td><p class="first last">2.702</p>
+</td>
+<td><p class="first last">2.839</p>
+</td>
+<td><p class="first last">5.623</p>
+</td>
+<td><p class="first last">5.623</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-015-get-ess-alert-alertroleassignments-html">
+<h2><a class="toc-backref" href="#id28">7.15&nbsp;&nbsp;&nbsp;PAGE 015: Get /ess/alert/AlertRoleAssignments.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/alert/AlertRoleAssignments.html</tt></p>
+<blockquote>
+<img alt="request_015.001.png" src="request_015.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.444</p>
+</td>
+<td><p class="first last">0.448</p>
+</td>
+<td><p class="first last">0.452</p>
+</td>
+<td><p class="first last">0.444</p>
+</td>
+<td><p class="first last">0.452</p>
+</td>
+<td><p class="first last">0.452</p>
+</td>
+<td><p class="first last">0.452</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.786</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">7</p>
+</td>
+<td><p class="first last">7</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.998</p>
+</td>
+<td><p class="first last">1.355</p>
+</td>
+<td><p class="first last">1.611</p>
+</td>
+<td><p class="first last">0.998</p>
+</td>
+<td><p class="first last">1.444</p>
+</td>
+<td><p class="first last">1.611</p>
+</td>
+<td><p class="first last">1.611</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.640</p>
+</td>
+<td><p class="first last">2.911</p>
+</td>
+<td><p class="first last">3.285</p>
+</td>
+<td><p class="first last">2.651</p>
+</td>
+<td><p class="first last">2.901</p>
+</td>
+<td><p class="first last">3.285</p>
+</td>
+<td><p class="first last">3.285</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-016-get-ess-monitor-uploadtosupport-html">
+<h2><a class="toc-backref" href="#id29">7.16&nbsp;&nbsp;&nbsp;PAGE 016: Get /ess/monitor/UploadToSupport.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/monitor/UploadToSupport.html</tt></p>
+<blockquote>
+<img alt="request_016.001.png" src="request_016.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.952</p>
+</td>
+<td><p class="first last">0.953</p>
+</td>
+<td><p class="first last">0.954</p>
+</td>
+<td><p class="first last">0.952</p>
+</td>
+<td><p class="first last">0.954</p>
+</td>
+<td><p class="first last">0.954</p>
+</td>
+<td><p class="first last">0.954</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">6</p>
+</td>
+<td><p class="first last">6</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.614</p>
+</td>
+<td><p class="first last">2.343</p>
+</td>
+<td><p class="first last">5.137</p>
+</td>
+<td><p class="first last">1.614</p>
+</td>
+<td><p class="first last">1.790</p>
+</td>
+<td><p class="first last">5.137</p>
+</td>
+<td><p class="first last">5.137</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.991</p>
+</td>
+<td><p class="first last">3.401</p>
+</td>
+<td><p class="first last">3.744</p>
+</td>
+<td><p class="first last">3.061</p>
+</td>
+<td><p class="first last">3.533</p>
+</td>
+<td><p class="first last">3.744</p>
+</td>
+<td><p class="first last">3.744</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-017-get-ess-report-detailedreports-html">
+<h2><a class="toc-backref" href="#id30">7.17&nbsp;&nbsp;&nbsp;PAGE 017: Get /ess/report/DetailedReports.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/report/DetailedReports.html</tt></p>
+<blockquote>
+<img alt="request_017.001.png" src="request_017.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">3.392</p>
+</td>
+<td><p class="first last">3.414</p>
+</td>
+<td><p class="first last">3.436</p>
+</td>
+<td><p class="first last">3.392</p>
+</td>
+<td><p class="first last">3.436</p>
+</td>
+<td><p class="first last">3.436</p>
+</td>
+<td><p class="first last">3.436</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">6</p>
+</td>
+<td><p class="first last">6</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.664</p>
+</td>
+<td><p class="first last">1.083</p>
+</td>
+<td><p class="first last">1.350</p>
+</td>
+<td><p class="first last">0.664</p>
+</td>
+<td><p class="first last">1.154</p>
+</td>
+<td><p class="first last">1.350</p>
+</td>
+<td><p class="first last">1.350</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.420</p>
+</td>
+<td><p class="first last">3.066</p>
+</td>
+<td><p class="first last">5.593</p>
+</td>
+<td><p class="first last">2.531</p>
+</td>
+<td><p class="first last">2.830</p>
+</td>
+<td><p class="first last">5.593</p>
+</td>
+<td><p class="first last">5.593</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-018-get-ess-audit-showauditreport-html">
+<h2><a class="toc-backref" href="#id31">7.18&nbsp;&nbsp;&nbsp;PAGE 018: Get /ess/audit/ShowAuditReport.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/audit/ShowAuditReport.html</tt></p>
+<blockquote>
+<img alt="request_018.001.png" src="request_018.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.393</p>
+</td>
+<td><p class="first last">0.394</p>
+</td>
+<td><p class="first last">0.394</p>
+</td>
+<td><p class="first last">0.393</p>
+</td>
+<td><p class="first last">0.394</p>
+</td>
+<td><p class="first last">0.394</p>
+</td>
+<td><p class="first last">0.394</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.800</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.869</p>
+</td>
+<td><p class="first last">1.871</p>
+</td>
+<td><p class="first last">4.510</p>
+</td>
+<td><p class="first last">0.869</p>
+</td>
+<td><p class="first last">1.320</p>
+</td>
+<td><p class="first last">4.510</p>
+</td>
+<td><p class="first last">4.510</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.450</p>
+</td>
+<td><p class="first last">UNACCEPTABLE</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.606</p>
+</td>
+<td><p class="first last">3.274</p>
+</td>
+<td><p class="first last">6.096</p>
+</td>
+<td><p class="first last">2.662</p>
+</td>
+<td><p class="first last">3.093</p>
+</td>
+<td><p class="first last">6.096</p>
+</td>
+<td><p class="first last">6.096</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-019-get-ess-report-summary-html">
+<h2><a class="toc-backref" href="#id32">7.19&nbsp;&nbsp;&nbsp;PAGE 019: Get /ess/report/Summary.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/report/Summary.html</tt></p>
+<blockquote>
+<img alt="request_019.001.png" src="request_019.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.386</p>
+</td>
+<td><p class="first last">0.389</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.386</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.960</p>
+</td>
+<td><p class="first last">1.081</p>
+</td>
+<td><p class="first last">1.264</p>
+</td>
+<td><p class="first last">0.960</p>
+</td>
+<td><p class="first last">1.045</p>
+</td>
+<td><p class="first last">1.264</p>
+</td>
+<td><p class="first last">1.264</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.518</p>
+</td>
+<td><p class="first last">3.132</p>
+</td>
+<td><p class="first last">5.867</p>
+</td>
+<td><p class="first last">2.526</p>
+</td>
+<td><p class="first last">2.869</p>
+</td>
+<td><p class="first last">5.867</p>
+</td>
+<td><p class="first last">5.867</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+<li><p class="first">Req: 002, link, url <tt class="docutils literal">/ess/style/webfx/canvaschart.css</tt></p>
+<blockquote>
+<img alt="request_019.002.png" src="request_019.002.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.370</p>
+</td>
+<td><p class="first last">0.371</p>
+</td>
+<td><p class="first last">0.372</p>
+</td>
+<td><p class="first last">0.370</p>
+</td>
+<td><p class="first last">0.372</p>
+</td>
+<td><p class="first last">0.372</p>
+</td>
+<td><p class="first last">0.372</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.983</p>
+</td>
+<td><p class="first last">1.192</p>
+</td>
+<td><p class="first last">1.340</p>
+</td>
+<td><p class="first last">0.983</p>
+</td>
+<td><p class="first last">1.327</p>
+</td>
+<td><p class="first last">1.340</p>
+</td>
+<td><p class="first last">1.340</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.349</p>
+</td>
+<td><p class="first last">3.017</p>
+</td>
+<td><p class="first last">3.363</p>
+</td>
+<td><p class="first last">2.706</p>
+</td>
+<td><p class="first last">3.015</p>
+</td>
+<td><p class="first last">3.363</p>
+</td>
+<td><p class="first last">3.363</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-020-get-ess-device-listdevices-html">
+<h2><a class="toc-backref" href="#id33">7.20&nbsp;&nbsp;&nbsp;PAGE 020: Get /ess/device/ListDevices.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/device/ListDevices.html</tt></p>
+<blockquote>
+<img alt="request_020.001.png" src="request_020.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.585</p>
+</td>
+<td><p class="first last">0.586</p>
+</td>
+<td><p class="first last">0.587</p>
+</td>
+<td><p class="first last">0.585</p>
+</td>
+<td><p class="first last">0.587</p>
+</td>
+<td><p class="first last">0.587</p>
+</td>
+<td><p class="first last">0.587</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.600</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.385</p>
+</td>
+<td><p class="first last">1.599</p>
+</td>
+<td><p class="first last">1.783</p>
+</td>
+<td><p class="first last">1.385</p>
+</td>
+<td><p class="first last">1.529</p>
+</td>
+<td><p class="first last">1.783</p>
+</td>
+<td><p class="first last">1.783</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.792</p>
+</td>
+<td><p class="first last">3.112</p>
+</td>
+<td><p class="first last">3.418</p>
+</td>
+<td><p class="first last">2.819</p>
+</td>
+<td><p class="first last">3.163</p>
+</td>
+<td><p class="first last">3.418</p>
+</td>
+<td><p class="first last">3.418</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-021-get-ess-device-listdeviceprofiles-html">
+<h2><a class="toc-backref" href="#id34">7.21&nbsp;&nbsp;&nbsp;PAGE 021: Get /ess/device/ListDeviceProfiles.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/device/ListDeviceProfiles.html</tt></p>
+<blockquote>
+<img alt="request_021.001.png" src="request_021.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.394</p>
+</td>
+<td><p class="first last">0.395</p>
+</td>
+<td><p class="first last">0.396</p>
+</td>
+<td><p class="first last">0.394</p>
+</td>
+<td><p class="first last">0.396</p>
+</td>
+<td><p class="first last">0.396</p>
+</td>
+<td><p class="first last">0.396</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.913</p>
+</td>
+<td><p class="first last">1.188</p>
+</td>
+<td><p class="first last">1.391</p>
+</td>
+<td><p class="first last">0.913</p>
+</td>
+<td><p class="first last">1.297</p>
+</td>
+<td><p class="first last">1.391</p>
+</td>
+<td><p class="first last">1.391</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.440</p>
+</td>
+<td><p class="first last">2.807</p>
+</td>
+<td><p class="first last">3.069</p>
+</td>
+<td><p class="first last">2.679</p>
+</td>
+<td><p class="first last">2.818</p>
+</td>
+<td><p class="first last">3.069</p>
+</td>
+<td><p class="first last">3.069</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-022-get-ess-room-listrooms-html">
+<h2><a class="toc-backref" href="#id35">7.22&nbsp;&nbsp;&nbsp;PAGE 022: Get /ess/room/ListRooms.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/room/ListRooms.html</tt></p>
+<blockquote>
+<img alt="request_022.001.png" src="request_022.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.451</p>
+</td>
+<td><p class="first last">0.453</p>
+</td>
+<td><p class="first last">0.455</p>
+</td>
+<td><p class="first last">0.451</p>
+</td>
+<td><p class="first last">0.455</p>
+</td>
+<td><p class="first last">0.455</p>
+</td>
+<td><p class="first last">0.455</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.900</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.028</p>
+</td>
+<td><p class="first last">1.912</p>
+</td>
+<td><p class="first last">4.697</p>
+</td>
+<td><p class="first last">1.028</p>
+</td>
+<td><p class="first last">1.247</p>
+</td>
+<td><p class="first last">4.697</p>
+</td>
+<td><p class="first last">4.697</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.450</p>
+</td>
+<td><p class="first last">UNACCEPTABLE</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.532</p>
+</td>
+<td><p class="first last">3.285</p>
+</td>
+<td><p class="first last">6.142</p>
+</td>
+<td><p class="first last">2.624</p>
+</td>
+<td><p class="first last">3.106</p>
+</td>
+<td><p class="first last">6.142</p>
+</td>
+<td><p class="first last">6.142</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-023-get-ess-person-listpersons-html">
+<h2><a class="toc-backref" href="#id36">7.23&nbsp;&nbsp;&nbsp;PAGE 023: Get /ess/person/ListPersons.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/person/ListPersons.html</tt></p>
+<blockquote>
+<img alt="request_023.001.png" src="request_023.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">3.457</p>
+</td>
+<td><p class="first last">3.459</p>
+</td>
+<td><p class="first last">3.462</p>
+</td>
+<td><p class="first last">3.457</p>
+</td>
+<td><p class="first last">3.462</p>
+</td>
+<td><p class="first last">3.462</p>
+</td>
+<td><p class="first last">3.462</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.081</p>
+</td>
+<td><p class="first last">1.280</p>
+</td>
+<td><p class="first last">1.454</p>
+</td>
+<td><p class="first last">1.081</p>
+</td>
+<td><p class="first last">1.259</p>
+</td>
+<td><p class="first last">1.454</p>
+</td>
+<td><p class="first last">1.454</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">7</p>
+</td>
+<td><p class="first last">7</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.531</p>
+</td>
+<td><p class="first last">2.910</p>
+</td>
+<td><p class="first last">3.225</p>
+</td>
+<td><p class="first last">2.531</p>
+</td>
+<td><p class="first last">3.003</p>
+</td>
+<td><p class="first last">3.225</p>
+</td>
+<td><p class="first last">3.225</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-024-get-ess-product-listproductgroups-html">
+<h2><a class="toc-backref" href="#id37">7.24&nbsp;&nbsp;&nbsp;PAGE 024: Get /ess/product/ListProductGroups.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/product/ListProductGroups.html</tt></p>
+<blockquote>
+<img alt="request_024.001.png" src="request_024.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.421</p>
+</td>
+<td><p class="first last">0.422</p>
+</td>
+<td><p class="first last">0.422</p>
+</td>
+<td><p class="first last">0.421</p>
+</td>
+<td><p class="first last">0.422</p>
+</td>
+<td><p class="first last">0.422</p>
+</td>
+<td><p class="first last">0.422</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.700</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.935</p>
+</td>
+<td><p class="first last">1.927</p>
+</td>
+<td><p class="first last">4.295</p>
+</td>
+<td><p class="first last">0.935</p>
+</td>
+<td><p class="first last">1.556</p>
+</td>
+<td><p class="first last">4.295</p>
+</td>
+<td><p class="first last">4.295</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">7</p>
+</td>
+<td><p class="first last">7</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.595</p>
+</td>
+<td><p class="first last">3.441</p>
+</td>
+<td><p class="first last">5.992</p>
+</td>
+<td><p class="first last">2.595</p>
+</td>
+<td><p class="first last">3.159</p>
+</td>
+<td><p class="first last">5.992</p>
+</td>
+<td><p class="first last">5.992</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-025-get-ess-publisher-listpublishers-html">
+<h2><a class="toc-backref" href="#id38">7.25&nbsp;&nbsp;&nbsp;PAGE 025: Get /ess/publisher/ListPublishers.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/publisher/ListPublishers.html</tt></p>
+<blockquote>
+<img alt="request_025.001.png" src="request_025.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.390</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.393</p>
+</td>
+<td><p class="first last">0.390</p>
+</td>
+<td><p class="first last">0.393</p>
+</td>
+<td><p class="first last">0.393</p>
+</td>
+<td><p class="first last">0.393</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.700</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.239</p>
+</td>
+<td><p class="first last">1.425</p>
+</td>
+<td><p class="first last">1.565</p>
+</td>
+<td><p class="first last">1.239</p>
+</td>
+<td><p class="first last">1.500</p>
+</td>
+<td><p class="first last">1.565</p>
+</td>
+<td><p class="first last">1.565</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.686</p>
+</td>
+<td><p class="first last">2.921</p>
+</td>
+<td><p class="first last">3.256</p>
+</td>
+<td><p class="first last">2.686</p>
+</td>
+<td><p class="first last">2.865</p>
+</td>
+<td><p class="first last">3.256</p>
+</td>
+<td><p class="first last">3.256</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-026-get-ess-publisher-listltiprofiles-html">
+<h2><a class="toc-backref" href="#id39">7.26&nbsp;&nbsp;&nbsp;PAGE 026: Get /ess/publisher/ListLTIProfiles.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/publisher/ListLTIProfiles.html</tt></p>
+<blockquote>
+<img alt="request_026.001.png" src="request_026.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.388</p>
+</td>
+<td><p class="first last">0.390</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.388</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.900</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.071</p>
+</td>
+<td><p class="first last">1.251</p>
+</td>
+<td><p class="first last">1.563</p>
+</td>
+<td><p class="first last">1.071</p>
+</td>
+<td><p class="first last">1.167</p>
+</td>
+<td><p class="first last">1.563</p>
+</td>
+<td><p class="first last">1.563</p>
+</td>
+</tr>
+<tr><td><p class="first last">10</p>
+</td>
+<td><p class="first last">0.500</p>
+</td>
+<td><p class="first last">POOR</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">2.866</p>
+</td>
+<td><p class="first last">3.083</p>
+</td>
+<td><p class="first last">3.300</p>
+</td>
+<td><p class="first last">2.866</p>
+</td>
+<td><p class="first last">3.300</p>
+</td>
+<td><p class="first last">3.300</p>
+</td>
+<td><p class="first last">3.300</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-027-get-ess-organization-listorganizations-html">
+<h2><a class="toc-backref" href="#id40">7.27&nbsp;&nbsp;&nbsp;PAGE 027: Get /ess/organization/ListOrganizations.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/organization/ListOrganizations.html</tt></p>
+<blockquote>
+<img alt="request_027.001.png" src="request_027.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.393</p>
+</td>
+<td><p class="first last">0.396</p>
+</td>
+<td><p class="first last">0.399</p>
+</td>
+<td><p class="first last">0.393</p>
+</td>
+<td><p class="first last">0.399</p>
+</td>
+<td><p class="first last">0.399</p>
+</td>
+<td><p class="first last">0.399</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.858</p>
+</td>
+<td><p class="first last">1.069</p>
+</td>
+<td><p class="first last">1.398</p>
+</td>
+<td><p class="first last">0.858</p>
+</td>
+<td><p class="first last">1.014</p>
+</td>
+<td><p class="first last">1.398</p>
+</td>
+<td><p class="first last">1.398</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-028-get-ess-config-showconfiguration-html">
+<h2><a class="toc-backref" href="#id41">7.28&nbsp;&nbsp;&nbsp;PAGE 028: Get /ess/config/ShowConfiguration.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/config/ShowConfiguration.html</tt></p>
+<blockquote>
+<img alt="request_028.001.png" src="request_028.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.412</p>
+</td>
+<td><p class="first last">0.412</p>
+</td>
+<td><p class="first last">0.413</p>
+</td>
+<td><p class="first last">0.412</p>
+</td>
+<td><p class="first last">0.413</p>
+</td>
+<td><p class="first last">0.413</p>
+</td>
+<td><p class="first last">0.413</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.954</p>
+</td>
+<td><p class="first last">1.241</p>
+</td>
+<td><p class="first last">1.384</p>
+</td>
+<td><p class="first last">0.954</p>
+</td>
+<td><p class="first last">1.312</p>
+</td>
+<td><p class="first last">1.384</p>
+</td>
+<td><p class="first last">1.384</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-029-get-ess-security-listsecuritymodules-html">
+<h2><a class="toc-backref" href="#id42">7.29&nbsp;&nbsp;&nbsp;PAGE 029: Get /ess/security/ListSecurityModules.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/security/ListSecurityModules.html</tt></p>
+<blockquote>
+<img alt="request_029.001.png" src="request_029.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">0.750</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.433</p>
+</td>
+<td><p class="first last">1.931</p>
+</td>
+<td><p class="first last">3.428</p>
+</td>
+<td><p class="first last">0.433</p>
+</td>
+<td><p class="first last">3.428</p>
+</td>
+<td><p class="first last">3.428</p>
+</td>
+<td><p class="first last">3.428</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.900</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.968</p>
+</td>
+<td><p class="first last">1.877</p>
+</td>
+<td><p class="first last">4.562</p>
+</td>
+<td><p class="first last">0.968</p>
+</td>
+<td><p class="first last">1.282</p>
+</td>
+<td><p class="first last">4.562</p>
+</td>
+<td><p class="first last">4.562</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-030-get-ess-config-showglobaldefaults-html">
+<h2><a class="toc-backref" href="#id43">7.30&nbsp;&nbsp;&nbsp;PAGE 030: Get /ess/config/ShowGlobalDefaults.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/config/ShowGlobalDefaults.html</tt></p>
+<blockquote>
+<img alt="request_030.001.png" src="request_030.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">0.750</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.442</p>
+</td>
+<td><p class="first last">1.971</p>
+</td>
+<td><p class="first last">3.499</p>
+</td>
+<td><p class="first last">0.442</p>
+</td>
+<td><p class="first last">3.499</p>
+</td>
+<td><p class="first last">3.499</p>
+</td>
+<td><p class="first last">3.499</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.800</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.639</p>
+</td>
+<td><p class="first last">1.236</p>
+</td>
+<td><p class="first last">1.568</p>
+</td>
+<td><p class="first last">0.639</p>
+</td>
+<td><p class="first last">1.269</p>
+</td>
+<td><p class="first last">1.568</p>
+</td>
+<td><p class="first last">1.568</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-031-get-ess-certificates-showcertificates-html">
+<h2><a class="toc-backref" href="#id44">7.31&nbsp;&nbsp;&nbsp;PAGE 031: Get /ess/certificates/ShowCertificates.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/certificates/ShowCertificates.html</tt></p>
+<blockquote>
+<img alt="request_031.001.png" src="request_031.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.389</p>
+</td>
+<td><p class="first last">0.390</p>
+</td>
+<td><p class="first last">0.391</p>
+</td>
+<td><p class="first last">0.389</p>
+</td>
+<td><p class="first last">0.391</p>
+</td>
+<td><p class="first last">0.391</p>
+</td>
+<td><p class="first last">0.391</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.900</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.099</p>
+</td>
+<td><p class="first last">1.269</p>
+</td>
+<td><p class="first last">1.603</p>
+</td>
+<td><p class="first last">1.099</p>
+</td>
+<td><p class="first last">1.183</p>
+</td>
+<td><p class="first last">1.603</p>
+</td>
+<td><p class="first last">1.603</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-032-get-ess-security-listtrustedsystems-html">
+<h2><a class="toc-backref" href="#id45">7.32&nbsp;&nbsp;&nbsp;PAGE 032: Get /ess/security/ListTrustedSystems.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/security/ListTrustedSystems.html</tt></p>
+<blockquote>
+<img alt="request_032.001.png" src="request_032.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+<td><p class="first last">0.392</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.900</p>
+</td>
+<td><p class="first last">Good</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.852</p>
+</td>
+<td><p class="first last">1.666</p>
+</td>
+<td><p class="first last">4.520</p>
+</td>
+<td><p class="first last">0.852</p>
+</td>
+<td><p class="first last">0.988</p>
+</td>
+<td><p class="first last">4.520</p>
+</td>
+<td><p class="first last">4.520</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-033-get-ess-security-listhostedserviceproviders-html">
+<h2><a class="toc-backref" href="#id46">7.33&nbsp;&nbsp;&nbsp;PAGE 033: Get /ess/security/ListHostedServiceProviders.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/security/ListHostedServiceProviders.html</tt></p>
+<blockquote>
+<img alt="request_033.001.png" src="request_033.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.381</p>
+</td>
+<td><p class="first last">0.381</p>
+</td>
+<td><p class="first last">0.382</p>
+</td>
+<td><p class="first last">0.381</p>
+</td>
+<td><p class="first last">0.382</p>
+</td>
+<td><p class="first last">0.382</p>
+</td>
+<td><p class="first last">0.382</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.905</p>
+</td>
+<td><p class="first last">1.180</p>
+</td>
+<td><p class="first last">1.415</p>
+</td>
+<td><p class="first last">0.905</p>
+</td>
+<td><p class="first last">1.256</p>
+</td>
+<td><p class="first last">1.415</p>
+</td>
+<td><p class="first last">1.415</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-034-get-ess-system-managesystemindexes-html">
+<h2><a class="toc-backref" href="#id47">7.34&nbsp;&nbsp;&nbsp;PAGE 034: Get /ess/system/ManageSystemIndexes.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/system/ManageSystemIndexes.html</tt></p>
+<blockquote>
+<img alt="request_034.001.png" src="request_034.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.387</p>
+</td>
+<td><p class="first last">0.388</p>
+</td>
+<td><p class="first last">0.388</p>
+</td>
+<td><p class="first last">0.387</p>
+</td>
+<td><p class="first last">0.388</p>
+</td>
+<td><p class="first last">0.388</p>
+</td>
+<td><p class="first last">0.388</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.700</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.207</p>
+</td>
+<td><p class="first last">1.466</p>
+</td>
+<td><p class="first last">1.607</p>
+</td>
+<td><p class="first last">1.207</p>
+</td>
+<td><p class="first last">1.549</p>
+</td>
+<td><p class="first last">1.607</p>
+</td>
+<td><p class="first last">1.607</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="page-035-get-ess-license-listlicenses-html">
+<h2><a class="toc-backref" href="#id48">7.35&nbsp;&nbsp;&nbsp;PAGE 035: Get /ess/license/ListLicenses.html</a></h2>
+<ul>
+<li><p class="first">Req: 001, get, url <tt class="docutils literal">/ess/license/ListLicenses.html</tt></p>
+<blockquote>
+<img alt="request_035.001.png" src="request_035.001.png" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><p class="first last">CUs</p>
+</th>
+<th class="head"><p class="first last">Apdex*</p>
+</th>
+<th class="head"><p class="first last">Rating</p>
+</th>
+<th class="head"><p class="first last">TOTAL</p>
+</th>
+<th class="head"><p class="first last">SUCCESS</p>
+</th>
+<th class="head"><p class="first last">ERROR</p>
+</th>
+<th class="head"><p class="first last">MIN</p>
+</th>
+<th class="head"><p class="first last">AVG</p>
+</th>
+<th class="head"><p class="first last">MAX</p>
+</th>
+<th class="head"><p class="first last">P10</p>
+</th>
+<th class="head"><p class="first last">MED</p>
+</th>
+<th class="head"><p class="first last">P90</p>
+</th>
+<th class="head"><p class="first last">P95</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><p class="first last">1</p>
+</td>
+<td><p class="first last">1.000</p>
+</td>
+<td><p class="first last">Excellent</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">2</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">0.402</p>
+</td>
+<td><p class="first last">0.404</p>
+</td>
+<td><p class="first last">0.406</p>
+</td>
+<td><p class="first last">0.402</p>
+</td>
+<td><p class="first last">0.406</p>
+</td>
+<td><p class="first last">0.406</p>
+</td>
+<td><p class="first last">0.406</p>
+</td>
+</tr>
+<tr><td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.800</p>
+</td>
+<td><p class="first last">FAIR</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">5</p>
+</td>
+<td><p class="first last">0.00%</p>
+</td>
+<td><p class="first last">1.242</p>
+</td>
+<td><p class="first last">1.991</p>
+</td>
+<td><p class="first last">4.528</p>
+</td>
+<td><p class="first last">1.242</p>
+</td>
+<td><p class="first last">1.276</p>
+</td>
+<td><p class="first last">4.528</p>
+</td>
+<td><p class="first last">4.528</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>* Apdex <sub>1.5</sub></p>
+</blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="definitions">
+<h1><a class="toc-backref" href="#id49">8&nbsp;&nbsp;&nbsp;Definitions</a></h1>
+<ul>
+<li><p class="first">CUs: Concurrent users or number of concurrent threads executing tests.</p>
+</li>
+<li><p class="first">Request: a single GET/POST/redirect/xmlrpc request.</p>
+</li>
+<li><p class="first">Page: a request with redirects and resource links (image, css, js) for an html page.</p>
+</li>
+<li><p class="first">STPS: Successful tests per second.</p>
+</li>
+<li><p class="first">SPPS: Successful pages per second.</p>
+</li>
+<li><p class="first">RPS: Requests per second, successful or not.</p>
+</li>
+<li><p class="first">maxSPPS: Maximum SPPS during the cycle.</p>
+</li>
+<li><p class="first">maxRPS: Maximum RPS during the cycle.</p>
+</li>
+<li><p class="first">MIN: Minimum response time for a page or request.</p>
+</li>
+<li><p class="first">AVG: Average response time for a page or request.</p>
+</li>
+<li><p class="first">MAX: Maximmum response time for a page or request.</p>
+</li>
+<li><p class="first">P10: 10th percentile, response time where 10 percent of pages or requests are delivered.</p>
+</li>
+<li><p class="first">MED: Median or 50th percentile, response time where half of pages or requests are delivered.</p>
+</li>
+<li><p class="first">P90: 90th percentile, response time where 90 percent of pages or requests are delivered.</p>
+</li>
+<li><p class="first">P95: 95th percentile, response time where 95 percent of pages or requests are delivered.</p>
+</li>
+<li><p class="first">Apdex T: Application Performance Index,
+this is a numerical measure of user satisfaction, it is based
+on three zones of application responsiveness:</p>
+<ul>
+<li><p class="first">Satisfied: The user is fully productive. This represents the
+time value (T seconds) below which users are not impeded by
+application response time.</p>
+</li>
+<li><p class="first">Tolerating: The user notices performance lagging within
+responses greater than T, but continues the process.</p>
+</li>
+<li><p class="first">Frustrated: Performance with a response time greater than 4*T
+seconds is unacceptable, and users may abandon the process.</p>
+<p>By default T is set to 1.5s this means that response time between 0
+and 1.5s the user is fully productive, between 1.5 and 6s the
+responsivness is tolerating and above 6s the user is frustrated.</p>
+<p>The Apdex score converts many measurements into one number on a
+uniform scale of 0-to-1 (0 = no users satisfied, 1 = all users
+satisfied).</p>
+<p>Visit <a class="reference external" href="http://www.apdex.org/">http://www.apdex.org/</a> for more information.</p>
+</li>
+</ul>
+</li>
+<li><p class="first">Rating: To ease interpretation the Apdex
+score is also represented as a rating:</p>
+<ul class="simple">
+<li>U for UNACCEPTABLE represented in gray for a score between 0 and 0.5</li>
+<li>P for POOR represented in red for a score between 0.5 and 0.7</li>
+<li>F for FAIR represented in yellow for a score between 0.7 and 0.85</li>
+<li>G for Good represented in green for a score between 0.85 and 0.94</li>
+<li>E for Excellent represented in blue for a score between 0.94 and 1.</li>
+</ul>
+</li>
+</ul>
+<p>Report generated with <a class="reference external" href="http://funkload.nuxeo.org/">FunkLoad</a> 1.16.1, more information available on the <a class="reference external" href="http://funkload.nuxeo.org/#benching">FunkLoad site</a>.</p>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2013-10-23 14:09 UTC.
+
+</div>
+</body>
+</html>
